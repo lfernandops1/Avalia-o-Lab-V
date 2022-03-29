@@ -3,7 +3,7 @@
 <h3><b>Preview release channel "default"</b></h3>
 <p>Open the camera app on your device and scan the code below</p>
 
-![](./src/assets/expo-code.svg)
+![](./src/assets/expo-go.svg)
 
 Or, open this link on your device:
 
