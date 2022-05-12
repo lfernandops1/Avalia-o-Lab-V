@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, Linking, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import BuyTicket from './buyticket';
 
@@ -19,14 +19,11 @@ const Main: React.FC<MainProps> = (props) => {
             <Image source={require('./../assets/star.png')} style={{width:228, height: 210}}/>
             <View>
                 <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Comprar Ingressos'} onPress={buytickets} />
-                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Fotos e Videos'} />
-                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Elenco'} />
-                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Historico dos Jogos'} />
+                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Instagram'} onPress={() => Linking.openURL('https://www.instagram.com/maceiomarechais/') } />
+                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Fotos'} onPress={() => nav.navigate('team')}/> 
+                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Historico dos Jogos'} onPress={() => nav.navigate('watch')} />
+                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Sair'} onPress={() => nav.navigate('login')} />
             </View>
-
-
-
-
         </View>
     );
 };

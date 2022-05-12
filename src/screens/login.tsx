@@ -16,13 +16,11 @@ const Login: React.FC<LoginProps> = (props) => {
 
     const schema = Yup.object().shape({
         email: Yup.string().required('email obrgatrio'),
-        password: Yup.string().required('senha obrgitario').min(6, 'o')
+        password: Yup.string().required('senha obrgitario').min(6, 'Tamanho mínimo de 6 caracteres')
     })
 
     const handleLogin = async (values: any) => {
-        await new Promise(resolve => setTimeout(resolve, 5000))
-
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+        nav.navigate('main')
     }
 
     return (
@@ -32,7 +30,7 @@ const Login: React.FC<LoginProps> = (props) => {
             validationSchema={schema}
             onSubmit={handleLogin}
         >
-            {({ values, touched, errors, handleSubmit, handleChange, handleBlur, isSubmitting }) => (
+            {({ values, touched, errors, handleSubmit, setFieldValue, isSubmitting }) => (
                 <View style={styles.container}>
                 {touched.email && errors.email && <Text style={{ color: 'red' }}>erro</Text>}    
                 <Image source={require('./../assets/star.png')} style={{width:228, height: 210}}/>
@@ -40,16 +38,16 @@ const Login: React.FC<LoginProps> = (props) => {
                     <Text style={styles.text}>
                         Email
                     </Text>
-                    <TextInput style={styles.textInput} placeholder='Email' onChangeText={handleChange('password')} />
+                    <TextInput value={values.email} style={styles.textInput} placeholder='Email' onChangeText={(text) => setFieldValue('email', text)} />
                     <Text style={styles.text}>
                         Senha
                     </Text>
-                    <TextInput style={styles.textInput} placeholder='Senha' onChangeText={handleChange('password')} />
+                    <TextInput value={values.password} secureTextEntry={true}  style={styles.textInput} placeholder='Senha' onChangeText={(text) => setFieldValue('password', text)} />
                     {isSubmitting ? <ActivityIndicator size={20} color="#000" /> : (
                         <Button buttonStyle={[styles.button, { backgroundColor: '#01C38E'}]} title={'Entrar'} onPress={() => handleSubmit()}/>
                     )}
                     
-                    <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Cadastre-se'} />
+                    <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Cadastre-se'} onPress={() => nav.navigate('cad')}  />
                 </View>
             </View>
             )}

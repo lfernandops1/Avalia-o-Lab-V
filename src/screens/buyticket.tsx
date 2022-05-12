@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Button } from 'react-native-elements';
@@ -6,6 +7,7 @@ interface BuyTicketProps {
 }
 
 const BuyTicket: React.FC<BuyTicketProps> = (props) => {
+    const nav = useNavigation<any>();
     return (
         <View style={styles.container}>
             <View style={styles.container}>
@@ -14,7 +16,7 @@ const BuyTicket: React.FC<BuyTicketProps> = (props) => {
                 <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Maceió Marechais x João Pessoa Espectros\n 22/06/2022'} />
                 <Button buttonStyle={[styles.button, { backgroundColor: '#01C38E'}]} title={'COMPRAR'}/>
 
-                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Voltar ao Inicio'} />
+                <Button buttonStyle={[styles.button,  { backgroundColor: 'red'}]} title={'Voltar ao Inicio'} onPress={() => nav.navigate('main')} />
 
                
             </View>
